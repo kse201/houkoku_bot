@@ -24,7 +24,7 @@ function handleEvent (event) {
         'いいね'
     ]
     let max = patterms.length
-    msg =  patterms[Math.floor( Math.random() * (max + 1) )]
+    let msg =  patterms[Math.floor( Math.random() * (max + 1) )]
 
     return client.replyMessage(event.replyToken, {
         type: 'text',
