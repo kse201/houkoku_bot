@@ -20,6 +20,7 @@ function handleEvent (event) {
 
     let patterms= [
         'すごい',
+        'すっごーい!',
         'えらい',
         'いいね'
     ]
