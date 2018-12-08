@@ -14,21 +14,29 @@ const app = express()
 const client = new line.Client(config)
 
 function handleEvent (event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    return Promise.resolve(null)
-  }
+    if (event.type !== 'message' || event.message.type !== 'text') {
+        return Promise.resolve(null)
+    }
 
-  return client.replyMessage(event.replyToken, {
-    type: 'text',
-    text: event.message.text
-  })
+    let patterms= [
+        'すごい',
+        'えらい',
+        'いいね'
+    ]
+    let max = patterms.length
+    msg =  patterms[Math.floor( Math.random() * (max + 1) )]
+
+    return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: msg
+    })
 }
 
 app.post('/webhook', line.middleware(config), (req, res) => {
-  console.log(req.body.events)
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
+    console.log(req.body.events)
+    Promise
+        .all(req.body.events.map(handleEvent))
+        .then((result) => res.json(result))
 })
 
 
