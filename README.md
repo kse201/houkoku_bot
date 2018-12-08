@@ -7,9 +7,14 @@
 
 ## Requirements
 
-## 仕様
+- nodejs
+- heroku acoount
 
 ## Installation
+
+```
+npm start
+```
 
 ### Demo
 
